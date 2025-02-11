@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" 
+        content="width=device-width, initial-scale=1.0, 
+                 maximum-scale=1.0, 
+                 user-scalable=no" />
+  <meta name="theme-color" content="#000000"/>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- iPhone Splash Screen (Optional) -->
+  <!--
+    If you want to add specific splash screens for iOS, you can include
+    <link rel="apple-touch-startup-image" ...> tags for different sizes.
+    For demonstration, not included here.
+  -->
+
+  <!-- iOS meta tags to allow "Add to Home Screen" -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  
+  <!-- Title and basic SEO -->
+  <title>Canvas Head Soccer - 2D Physics Game</title>
+  <meta name="description" content="A 2D physics-based soccer game built in HTML, CSS, and JS, with PWA offline support, optimized for iPhone touch controls." />
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Fallback icons for various devices -->
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="icon" sizes="192x192" href="icons/icon-192.png">
+  <link rel="icon" sizes="512x512" href="icons/icon-512.png">
+
+</head>
+<body>
+  <!-- 
+    The game canvas. 
+    We will draw everything here: players, ball, goals, scoreboard, etc.
+  -->
+  <div id="canvas-container">
+    <canvas id="gameCanvas" width="1280" height="720">
+      <!-- This text is displayed if the browser does not support Canvas -->
+      Your browser does not support the HTML5 Canvas element.
+    </canvas>
+  </div>
+
+  <!-- A container for on-screen touch controls on mobile devices -->
+  <div id="touch-controls" class="hidden">
+    <!-- Left/Right/Jump Buttons for Player 1 -->
+    <div class="touch-btn" id="p1-left">←</div>
+    <div class="touch-btn" id="p1-right">→</div>
+    <div class="touch-btn" id="p1-jump">↑</div>
+
+    <!-- Left/Right/Jump Buttons for Player 2 -->
+    <div class="touch-btn" id="p2-left">←</div>
+    <div class="touch-btn" id="p2-right">→</div>
+    <div class="touch-btn" id="p2-jump">↑</div>
+  </div>
+
+  <!-- The main script to run the game logic -->
+  <script src="script.js"></script>
+
+  <!-- Register service worker for PWA offline support -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(reg => {
+            console.log('Service Worker registered!', reg);
+          })
+          .catch(err => {
+            console.error('Service Worker registration failed:', err);
+          });
+      });
+    }
+  </script>
+</body>
+</html>
