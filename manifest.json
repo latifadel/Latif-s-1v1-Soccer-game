@@ -1,11 +1,11 @@
 {
-  "name": "Ultimate Canvas Soccer",
-  "short_name": "CanvasSoccer",
+  "name": "Polished Canvas Soccer",
+  "short_name": "Soccer",
   "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#222222",
+  "background_color": "#000000",
   "theme_color": "#000000",
-  "description": "A polished 2D canvas-based soccer game with an AI mode, offline play, and responsive touch controls.",
+  "description": "A well-designed 2D soccer game with offline support, touch controls, and no filler code.",
   "icons": [
     {
       "src": "icons/icon-192.png",
