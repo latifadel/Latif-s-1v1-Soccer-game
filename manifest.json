@@ -1,11 +1,11 @@
 {
-  "name": "Canvas Head Soccer",
-  "short_name": "HeadSoccer",
+  "name": "Ultimate Canvas Soccer",
+  "short_name": "CanvasSoccer",
   "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#000000",
+  "background_color": "#222222",
   "theme_color": "#000000",
-  "description": "A 2D physics-based soccer game with offline support, built using HTML5 Canvas.",
+  "description": "A polished 2D canvas-based soccer game with an AI mode, offline play, and responsive touch controls.",
   "icons": [
     {
       "src": "icons/icon-192.png",
