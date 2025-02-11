@@ -1,76 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport"
+  <meta charset="UTF-8"/>
+  <meta name="viewport" 
         content="width=device-width, 
                  initial-scale=1.0, 
                  maximum-scale=1.0, 
                  user-scalable=no"/>
   <meta name="theme-color" content="#000000"/>
-  <title>Ultimate Canvas Soccer</title>
-
-  <!-- PWA Manifest -->
-  <link rel="manifest" href="manifest.json" />
-
-  <!-- iOS meta tags -->
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Icons (for PWA and browser) -->
-  <link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192.png" />
-  <link rel="icon" sizes="192x192" href="icons/icon-192.png" />
-  <link rel="icon" sizes="512x512" href="icons/icon-512.png" />
-
-  <!-- Basic SEO -->
-  <meta name="description" content="A polished 2D soccer game with AI or 2P mode, built in HTML, CSS & JS, with offline/PWA support." />
+  <title>Exquisite Canvas Soccer</title>
+  <link rel="manifest" href="manifest.json"/>
+  <link rel="stylesheet" href="style.css"/>
+  <meta name="description" content="A beautiful 2D soccer game with a fancy background, stylized characters, good controls, and a bouncing ball. Minimal code documentation, maximum design."/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <link rel="icon" href="icons/icon-192.png" sizes="192x192"/>
+  <link rel="icon" href="icons/icon-512.png" sizes="512x512"/>
 </head>
 <body>
-  <!-- 
-    The main container for the game. 
-    The canvas will be placed inside a wrapper that we can style in CSS.
-  -->
   <div id="game-root">
-    
-    <!-- Responsive container for the Canvas -->
     <div id="canvas-container">
       <canvas id="gameCanvas" width="1280" height="720">
-        <!-- If Canvas is not supported, show a fallback message -->
         Your browser does not support the HTML5 Canvas element.
       </canvas>
     </div>
-
-    <!-- Touch Controls for Mobile (hidden on Desktop) -->
     <div id="touch-controls" class="hidden">
-      <!-- Player1: left, right, jump -->
       <div class="touch-btn" id="p1-left">←</div>
       <div class="touch-btn" id="p1-right">→</div>
       <div class="touch-btn" id="p1-jump">▲</div>
-
-      <!-- Player2: left, right, jump (only shown in 2P mode) -->
       <div class="touch-btn" id="p2-left">←</div>
       <div class="touch-btn" id="p2-right">→</div>
       <div class="touch-btn" id="p2-jump">▲</div>
     </div>
   </div>
-
-  <!-- The main game script -->
   <script src="script.js"></script>
-
-  <!-- Register the Service Worker for offline support -->
   <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
+    if('serviceWorker' in navigator){
+      window.addEventListener('load',()=>{
         navigator.serviceWorker.register('service-worker.js')
-          .then(registration => {
-            console.log('Service Worker registered with scope:', registration.scope);
-          })
-          .catch(error => {
-            console.error('Service Worker registration failed:', error);
-          });
+        .then(reg=>console.log('Service Worker registered.',reg))
+        .catch(err=>console.error('Service Worker registration failed:',err));
       });
     }
   </script>
