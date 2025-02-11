@@ -1,0 +1,175 @@
+/***************************************************************
+ * style.css
+ * 
+ * Purpose:
+ *   Provides a modern, responsive, and visually appealing style
+ *   for our 2D Soccer/Headball game. Includes typography, layout,
+ *   transitions, and responsive design adjustments.
+ *
+ * Structure:
+ *   1) Global Resets & Box-Sizing
+ *   2) Body Styling
+ *   3) Canvas Container Layout
+ *   4) Touch Controls
+ *   5) Buttons, Overlays, and UI Components
+ *   6) Responsive Queries
+ ***************************************************************/
+
+/* 1) GLOBAL RESETS & BOX-SIZING */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2) BODY STYLING */
+body {
+  background: linear-gradient(180deg, #333 0%, #111 100%);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: #fff;
+  height: 100vh;
+  overflow: hidden; /* We want to block scrolling, as the game is full screen. */
+  -webkit-touch-callout: none; /* Disable callouts on iOS long press */
+  -webkit-user-select: none;   /* Disable text selection on iOS */
+  user-select: none;           /* Standard user selection disable */
+}
+
+/* 3) CANVAS CONTAINER LAYOUT */
+#canvas-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+#gameCanvas {
+  display: block;
+  /* We can make the canvas responsive by letting JS handle its size,
+     or we can keep a certain ratio. We'll do some dynamic scaling in JS. */
+  background: #222; /* fallback background if needed */
+  border: 2px solid #444;
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+/* 4) TOUCH CONTROLS */
+#touch-controls {
+  position: absolute;
+  bottom: 5%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  pointer-events: none; /* We'll enable pointer events only for the buttons themselves. */
+  z-index: 999;
+}
+
+.touch-btn {
+  pointer-events: auto; /* re-enable pointer events for actual buttons */
+  width: 60px;
+  height: 60px;
+  margin: 8px;
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.touch-btn:active {
+  background: rgba(255,255,255,0.2);
+  transform: scale(0.95);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* 5) BUTTONS, OVERLAYS, AND UI COMPONENTS */
+
+/* Generic Button Style */
+.button {
+  cursor: pointer;
+  background-color: #ff3;
+  color: #000;
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: 2px solid #aaa;
+  font-weight: bold;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 5px 0 #aaa;
+}
+
+.button:hover {
+  background-color: #ffc;
+}
+
+.button:active {
+  transform: translateY(2px);
+  box-shadow: 0 3px 0 #aaa;
+}
+
+/* Title and scoreboard text styling */
+.title-text {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.score-text {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 10px;
+}
+
+/* Overlays for game states like "Game Over" or "Main Menu" */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(20, 20, 20, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  z-index: 1000;
+}
+
+/* Sample class for hiding overlay once the game starts */
+.hidden-overlay {
+  display: none;
+}
+
+/* 6) RESPONSIVE QUERIES */
+@media screen and (max-width: 768px) {
+  .touch-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+  .button {
+    font-size: 0.9rem;
+    padding: 10px 14px;
+  }
+  .title-text {
+    font-size: 2rem;
+  }
+  .score-text {
+    font-size: 1.5rem;
+  }
+}
